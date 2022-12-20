@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id String @id @default(uuid())
+  client_name String
+  client_number String
+  procediment_client ProcedimentsClients[] @relation("cliente")
+  next_procediment_date DateTime?
+  observations String?
+
+
+  @@map("clientes")
+}
+
+model Procediment {
+  id String @id @default(uuid())
+  name String
+  price Float
+  procediment_client ProcedimentsClients[] @relation("procediment")
+
+  @@map("procediments")
+}
+
+model ProcedimentsClients {
+  @@id([clientId, procedimentId])
+
+  client Client @relation("cliente", fields: [clientId], references: [id])
+  clientId String
+  procediment Procediment @relation("procediment", fields: [procedimentId], references: [id])
+  procedimentId String
+
+  @@map("procedimentos_clientes")
+}
