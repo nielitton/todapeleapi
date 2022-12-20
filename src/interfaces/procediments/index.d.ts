@@ -1,4 +1,4 @@
-export interface IClientCreate {
-    name: String;
-    price: Float32Array;
+export interface IProcedimentCreate {
+    name: string;
+    price: number;
 }
