@@ -35,7 +35,7 @@ model ProcedimentsClients {
 
   client        Client @relation("cliente", fields: [clientId], references: [id])
   clientId      String
-  procediment   Procediment @relation("procediment", fields: [procedimentId], references: [id])
+  procediment   Procediment @relation("procediment", fields: [procedimentId], references: [id], onDelete: Cascade)
   procedimentId String
 
   @@map("procedimentos_clientes")
