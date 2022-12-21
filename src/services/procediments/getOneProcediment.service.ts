@@ -5,6 +5,11 @@ export class getOneProcedimentService {
         const procediment = await prisma.procediment.findUnique({
             where: {
                 id
+            }, select: {
+                id: true,
+                name: true,
+                price: true,
+                procediment_client: true,
             }
         })
         return procediment

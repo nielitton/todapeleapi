@@ -8,6 +8,6 @@ export interface IClientCreate {
 export interface IClientUpdate {
     id:                    string;
     client_number:         string;
-    next_procediment_date: Date;
+    next_procediment_date: string;
     observations:          string;
 }
