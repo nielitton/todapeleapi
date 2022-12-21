@@ -5,5 +5,6 @@ export interface IProcedimentCreate {
 
 export interface IProcedimentUpdate {
     id:    string
+    name:  string
     price: number
 }

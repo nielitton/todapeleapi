@@ -1,3 +1,4 @@
+import { AppError } from "../../errors/AppError";
 import { IClientUpdate } from "../../interfaces/client";
 import { prisma } from "../../prisma/client";
 
@@ -13,6 +14,11 @@ export class ClientUpdateService {
                 observations
             }
         })
+
+        if(!updatedClient) {
+            throw new AppError("Client does not exists")
+        }
+        
         return updatedClient
     }
 }

@@ -1,13 +1,19 @@
+import { AppError } from "../../errors/AppError";
 import { prisma } from "../../prisma/client";
 
 
 export class deleteClientService {
     async execute({id}: {id: string}) {
-        const userDeleted = prisma.client.delete({
+        const clientDeleted = prisma.client.delete({
             where: {
                 id,
             }
         })
-        return userDeleted
+
+        if(!clientDeleted) {
+            throw new AppError("Client does not exists")
+        }
+        
+        return clientDeleted
     }
 }

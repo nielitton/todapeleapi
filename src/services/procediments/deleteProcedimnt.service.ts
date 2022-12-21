@@ -1,3 +1,4 @@
+import { AppError } from "../../errors/AppError";
 import { prisma } from "../../prisma/client";
 
 export class deleteProcedimentService {
@@ -7,6 +8,11 @@ export class deleteProcedimentService {
                 id
             }
         })
+
+        if(!deletedProcediment) {
+            throw new AppError("Procediment does not exists")
+        }
+
         return deletedProcediment
     }
 }

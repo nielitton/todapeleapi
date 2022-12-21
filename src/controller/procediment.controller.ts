@@ -43,11 +43,11 @@ export class ProcedimentController {
     }
     async updateProcediment(req: Request, res: Response) {
         const { id } = req.params
-        const { price } = req.body
+        const { name, price } = req.body
 
         const procediment = new updateProcedimentService()
 
-        const result = await procediment.execute({id, price})
+        const result = await procediment.execute({id, name, price})
     
         res.status(200).json({"message": "Procediment updated", "procediment": result})
     }

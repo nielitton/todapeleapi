@@ -1,3 +1,4 @@
+import { AppError } from "../../errors/AppError";
 import { prisma } from "../../prisma/client";
 
 export class getOneProcedimentService {
@@ -9,9 +10,14 @@ export class getOneProcedimentService {
                 id: true,
                 name: true,
                 price: true,
-                procediment_client: true,
             }
         })
+
+        
+        if(!procediment) {
+            throw new AppError("Procediment does not exists", 400)
+        }
+
         return procediment
     }
 }
