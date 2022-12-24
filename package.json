@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
-    "setup": "nodejs-16_x, yarn-1_x, openssl",
-    "install": "yarn install --frozen-lockfile"
+    "start": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +17,7 @@
   "dependencies": {
     "@prisma/client": "^4.7.1",
     "express": "^4.18.2",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "pg-hstore": "^2.3.4"
   }
 }
